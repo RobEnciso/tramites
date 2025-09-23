@@ -1,138 +1,93 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let currentStep = 1;
-    const totalSteps = 7;
-    const form = document.getElementById('multi-step-form');
-    const nextBtn = document.getElementById('nextBtn');
     const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
     const submitBtn = document.getElementById('submitBtn');
-    const progress = document.getElementById('progress');
+    const form = document.getElementById('multi-step-form');
+    const steps = Array.from(document.querySelectorAll('.form-step'));
+    const progressText = document.getElementById('progress');
     const successMessage = document.getElementById('success-message');
 
-    function showStep(step) {
-        // Hide all steps
-        for (let i = 1; i <= totalSteps; i++) {
-            document.getElementById('step-' + i).style.display = 'none';
-        }
-        // Show the current step
-        document.getElementById('step-' + step).style.display = 'block';
+    let currentStep = 0;
 
-        // Update progress bar
-        progress.textContent = `Paso ${step} de ${totalSteps}`;
-
-        // Update button visibility
-        if (step === 1) {
-            prevBtn.style.display = 'none';
-        } else {
-            prevBtn.style.display = 'inline-block';
-        }
-
-        if (step === totalSteps) {
-            nextBtn.style.display = 'none';
-            submitBtn.style.display = 'inline-block';
-        } else {
-            nextBtn.style.display = 'inline-block';
-            submitBtn.style.display = 'none';
-        }
+    // Función para mostrar el paso actual y ocultar los demás
+    function showStep(stepIndex) {
+        steps.forEach((step, index) => {
+            step.style.display = index === stepIndex ? 'block' : 'none';
+        });
+        progressText.textContent = `Paso ${stepIndex + 1} de ${steps.length}`;
+        
+        // Lógica de los botones
+        prevBtn.style.display = stepIndex === 0 ? 'none' : 'inline-block';
+        nextBtn.style.display = stepIndex === steps.length - 1 ? 'none' : 'inline-block';
+        submitBtn.style.display = stepIndex === steps.length - 1 ? 'inline-block' : 'none';
     }
 
-    function validateStep(step) {
-        let valid = true;
-        const currentStepFields = document.querySelectorAll(`#step-${step} [required]`);
-
+    // Función para validar los campos del paso actual
+    function validateStep(stepIndex) {
+        const currentStepFields = steps[stepIndex].querySelectorAll('[required]');
+        let isValid = true;
         currentStepFields.forEach(field => {
-            if (field.type === 'radio' || field.type === 'checkbox') {
-                const name = field.name;
-                if (!document.querySelector(`input[name="${name}"]:checked`)) {
-                    valid = false;
-                }
-            } else if (!field.value.trim()) {
-                valid = false;
+            if (!field.value.trim()) {
+                isValid = false;
+                // Opcional: añadir una clase de error para resaltar el campo
+                field.classList.add('input-error');
+            } else {
+                field.classList.remove('input-error');
             }
         });
-
-        if (!valid) {
+        if (!isValid) {
             alert('Por favor, completa todos los campos obligatorios.');
         }
-        return valid;
+        return isValid;
     }
 
+    // Evento para el botón "Siguiente"
     nextBtn.addEventListener('click', () => {
-        if (validateStep(currentStep) && currentStep < totalSteps) {
+        if (validateStep(currentStep)) {
             currentStep++;
             showStep(currentStep);
         }
     });
 
+    // Evento para el botón "Anterior"
     prevBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            showStep(currentStep);
+        currentStep--;
+        showStep(currentStep);
+    });
+    
+    // Evento para el envío final del formulario
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Evita que la página se recargue
+
+      if (!validateStep(currentStep)) {
+          return; // Detiene el envío si el último paso no es válido
+      }
+
+      const formData = new FormData(form);
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.result === 'success') {
+          form.style.display = 'none';
+          successMessage.style.display = 'block';
+        } else {
+          throw new Error(data.error || 'Hubo un error desconocido en el servidor.');
         }
+      })
+      .catch(error => {
+        console.error('Error en el envío:', error);
+        alert('Hubo un error al enviar el formulario. Por favor, revisa tu conexión e inténtalo de nuevo.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Información';
+      });
     });
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (validateStep(currentStep)) {
-            // Here you would typically send the data to a server
-            // For this example, we'll just hide the form and show the success message
-            form.style.display = 'none';
-            successMessage.style.display = 'block';
-        }
-    });
-
-    // --- LOGIC FOR CONDITIONAL FIELDS ---
-
-    // Step 2: Nationality
-    const otraNacionalidadRadios = document.querySelectorAll('input[name="otra-nacionalidad"]');
-    const cualNacionalidadInput = document.querySelector('input[name="cual-nacionalidad"]');
-    otraNacionalidadRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            cualNacionalidadInput.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-    const residentePermanenteRadios = document.querySelectorAll('input[name="residente-permanente"]');
-    const cualResidenciaInput = document.querySelector('input[name="cual-residencia"]');
-    residentePermanenteRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            cualResidenciaInput.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-    const ssnItinRadios = document.querySelectorAll('input[name="ssn-itin"]');
-    const ssnItinNumeroInput = document.querySelector('input[name="ssn-itin-numero"]');
-    ssnItinRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            ssnItinNumeroInput.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-    // Step 6: Travel History
-    const viajadoAntesRadios = document.querySelectorAll('input[name="viajado-antes"]');
-    const viajadoAntesDetalles = document.querySelector('textarea[name="viajado-antes-detalles"]');
-    viajadoAntesRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            viajadoAntesDetalles.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-    const visaNegadaRadios = document.querySelectorAll('input[name="visa-negada"]');
-    const visaNegadaDetalles = document.querySelector('textarea[name="visa-negada-detalles"]');
-    visaNegadaRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            visaNegadaDetalles.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-    const problemasMigratoriosRadios = document.querySelectorAll('input[name="problemas-migratorios"]');
-    const problemasMigratoriosDetalles = document.querySelector('textarea[name="problemas-migratorios-detalles"]');
-    problemasMigratoriosRadios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            problemasMigratoriosDetalles.style.display = e.target.value === 'Sí' ? 'block' : 'none';
-        });
-    });
-
-
-    // Initialize the form
+    // Mostrar el primer paso al cargar la página
     showStep(currentStep);
 });
