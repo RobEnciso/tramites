@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asesoría Visa Americana DS-160</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. SECCIÓN DE HÉROE -->
+    <header class="hero-section">
+        <div class="hero-content">
+            <h1>Tu Visa Americana, Sin Complicaciones.</h1>
+            <p>Te ayudamos a preparar tu información para el formulario DS-160 de forma correcta y eficiente. Ahorra tiempo y evita los errores más comunes.</p>
+            <a href="#form-section" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. SECCIÓN DE PROBLEMA/SOLUCIÓN -->
+        <section class="problem-solution-section">
+            <h2>¿El trámite de la visa te parece abrumador?</h2>
+            <p>Sabemos que el formulario oficial DS-160 puede ser largo, confuso y tiene un tiempo límite que genera estrés. Un solo error puede causar retrasos en tu proceso.</p>
+            <p>Nuestro servicio simplifica todo. Recopilamos tu información a través de un formulario sencillo y en español, la revisamos cuidadosamente y la dejamos lista para que tu solicitud oficial sea un proceso rápido y sin estrés.</p>
+        </section>
+
+        <!-- 3. SECCIÓN "CÓMO FUNCIONA" -->
+        <section class="how-it-works-section">
+            <h2>Nuestro Proceso en 3 Simples Pasos</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <!-- Icono de formulario -->
+                    <h3>Completa nuestro formulario</h3>
+                    <p>Llena nuestro cuestionario seguro en línea desde tu celular o computadora, a tu propio ritmo.</p>
+                </div>
+                <div class="step">
+                    <!-- Icono de lupa -->
+                    <h3>Revisamos y preparamos</h3>
+                    <p>Verificamos que toda tu información esté correcta y completa para evitar cualquier contratiempo.</p>
+                </div>
+                <div class="step">
+                    <!-- Icono de cohete -->
+                    <h3>¡Listo para tu solicitud!</h3>
+                    <p>Te entregamos toda la información organizada para que el llenado final y el agendamiento de tu cita sean exitosos.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SECCIÓN DEL FORMULARIO -->
+        <section id="form-section" class="form-section">
+            <h2>Da el Primer Paso Hoy Mismo</h2>
+            <p>Llena el siguiente formulario con tus datos. Es 100% confidencial y el primer paso para iniciar tu trámite con nuestra ayuda.</p>
+
+            <form id="multi-step-form">
+                <!-- Barra de Progreso -->
+                <div class="progress-bar">
+                    <div class="progress" id="progress">Paso 1 de 7</div>
+                </div>
+
+                <!-- Paso 1: Información Personal -->
+                <div class="form-step" id="step-1">
+                    <h3>Paso 1: Información Personal</h3>
+                    <label for="nombres">Nombre(s):</label>
+                    <input type="text" id="nombres" name="nombres" placeholder="Como aparece en tu pasaporte" required>
+
+                    <label for="apellidos">Apellido(s):</label>
+                    <input type="text" id="apellidos" name="apellidos" placeholder="Como aparece en tu pasaporte" required>
+
+                    <label for="otros-nombres">Otros nombres o alias:</label>
+                    <input type="text" id="otros-nombres" name="otros-nombres" placeholder="Ej: nombre de soltera">
+
+                    <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+
+                    <label>Lugar de Nacimiento:</label>
+                    <input type="text" name="ciudad-nacimiento" placeholder="Ciudad" required>
+                    <input type="text" name="estado-nacimiento" placeholder="Estado/Provincia" required>
+                    <input type="text" name="pais-nacimiento" placeholder="País" required>
+
+                    <label>Sexo:</label>
+                    <input type="radio" name="sexo" value="Femenino" required> Femenino
+                    <input type="radio" name="sexo" value="Masculino" required> Masculino
+
+                    <label for="estado-civil">Estado Civil:</label>
+                    <select id="estado-civil" name="estado-civil" required>
+                        <option value="Soltero/a">Soltero/a</option>
+                        <option value="Casado/a">Casado/a</option>
+                        <option value="Union Libre">Unión Libre</option>
+                        <option value="Divorciado/a">Divorciado/a</option>
+                        <option value="Viudo/a">Viudo/a</option>
+                    </select>
+
+                    <label for="curp">CURP:</label>
+                    <input type="text" id="curp" name="curp" required>
+                </div>
+
+                <!-- Paso 2: Nacionalidad y Documentos -->
+                <div class="form-step" id="step-2" style="display:none;">
+                    <h3>Paso 2: Nacionalidad y Otros Documentos</h3>
+                    <label>¿Tienes otra nacionalidad además de la mexicana?</label>
+                    <input type="radio" name="otra-nacionalidad" value="Sí"> Sí
+                    <input type="radio" name="otra-nacionalidad" value="No" checked> No
+                    <input type="text" name="cual-nacionalidad" placeholder="¿Cuál?" style="display:none;">
+
+                    <label>¿Eres residente permanente de otro país?</label>
+                    <input type="radio" name="residente-permanente" value="Sí"> Sí
+                    <input type="radio" name="residente-permanente" value="No" checked> No
+                    <input type="text" name="cual-residencia" placeholder="¿De cuál?" style="display:none;">
+
+                    <label>¿Tienes Número de Seguro Social (SSN) o ITIN de EE.UU.?</label>
+                    <input type="radio" name="ssn-itin" value="Sí"> Sí
+                    <input type="radio" name="ssn-itin" value="No" checked> No
+                    <input type="text" name="ssn-itin-numero" placeholder="Escribe el número" style="display:none;">
+                </div>
+
+                <!-- Paso 3: Contacto y Pasaporte -->
+                <div class="form-step" id="step-3" style="display:none;">
+                    <h3>Paso 3: Contacto y Pasaporte</h3>
+                    <label for="direccion">Dirección de residencia:</label>
+                    <textarea id="direccion" name="direccion" placeholder="Calle y Número, Colonia, Código Postal, Ciudad, Estado" required></textarea>
+
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="tel-principal">Teléfono principal:</label>
+                    <input type="tel" id="tel-principal" name="tel-principal" required>
+
+                    <label for="tel-secundario">Teléfono secundario:</label>
+                    <input type="tel" id="tel-secundario" name="tel-secundario">
+
+                    <label for="pasaporte">Número de Pasaporte:</label>
+                    <input type="text" id="pasaporte" name="pasaporte" required>
+
+                    <label for="pasaporte-emision">Fecha de Emisión del Pasaporte:</label>
+                    <input type="date" id="pasaporte-emision" name="pasaporte-emision" required>
+
+                    <label for="pasaporte-vencimiento">Fecha de Vencimiento del Pasaporte:</label>
+                    <input type="date" id="pasaporte-vencimiento" name="pasaporte-vencimiento" required>
+
+                    <label>Lugar de Emisión del Pasaporte:</label>
+                    <input type="text" name="ciudad-emision-pasaporte" placeholder="Ciudad" required>
+                    <input type="text" name="pais-emision-pasaporte" placeholder="País" required>
+                </div>
+
+                <!-- Paso 4: Información del Viaje -->
+                <div class="form-step" id="step-4" style="display:none;">
+                    <h3>Paso 4: Planes de Viaje</h3>
+                    <label for="proposito-viaje">Propósito principal de tu viaje:</label>
+                    <select id="proposito-viaje" name="proposito-viaje" required>
+                        <option value="Turismo/Vacaciones">Turismo/Vacaciones</option>
+                        <option value="Negocios">Negocios</option>
+                        <option value="Visita Familiar">Visita Familiar</option>
+                        <option value="Tratamiento Médico">Tratamiento Médico</option>
+                        <option value="Tránsito">Tránsito</option>
+                    </select>
+
+                    <label for="fecha-viaje">¿Tienes fecha estimada para tu viaje?</label>
+                    <input type="date" id="fecha-viaje" name="fecha-viaje">
+
+                    <label for="duracion-viaje">¿Cuánto tiempo planeas quedarte en EE.UU.?</label>
+                    <input type="text" id="duracion-viaje" name="duracion-viaje" placeholder="Ej: 2 semanas" required>
+
+                    <label for="hospedaje-eeuu">Dirección donde te hospedarás en EE.UU.:</label>
+                    <textarea id="hospedaje-eeuu" name="hospedaje-eeuu" placeholder="Nombre del hotel o dirección completa del familiar/amigo" required></textarea>
+
+                    <label for="quien-paga">¿Quién pagará los gastos de tu viaje?</label>
+                    <input type="text" id="quien-paga" name="quien-paga" placeholder="Yo mismo, mi empleador, un familiar, etc." required>
+                </div>
+
+                <!-- Paso 5: Información Familiar -->
+                <div class="form-step" id="step-5" style="display:none;">
+                    <h3>Paso 5: Información Familiar</h3>
+                    <label for="nombre-padre">Nombre completo de tu padre:</label>
+                    <input type="text" id="nombre-padre" name="nombre-padre" required>
+                    <label for="nacimiento-padre">Fecha de nacimiento de tu padre:</label>
+                    <input type="date" id="nacimiento-padre" name="nacimiento-padre" required>
+
+                    <label for="nombre-madre">Nombre completo de tu madre:</label>
+                    <input type="text" id="nombre-madre" name="nombre-madre" required>
+                    <label for="nacimiento-madre">Fecha de nacimiento de tu madre:</label>
+                    <input type="date" id="nacimiento-madre" name="nacimiento-madre" required>
+
+                    <label for="datos-conyuge">Datos de tu cónyuge (si aplica):</label>
+                    <textarea id="datos-conyuge" name="datos-conyuge" placeholder="Nombre completo, fecha y lugar de nacimiento, nacionalidad"></textarea>
+
+                    <label for="datos-hijos">Datos de tus hijos (si aplica):</label>
+                    <textarea id="datos-hijos" name="datos-hijos" placeholder="Lista de nombres completos y fechas de nacimiento"></textarea>
+                </div>
+
+                <!-- Paso 6: Historial de Viajes a EE.UU. -->
+                <div class="form-step" id="step-6" style="display:none;">
+                    <h3>Paso 6: Historial Migratorio</h3>
+                    <label>¿Has viajado a Estados Unidos anteriormente?</label>
+                    <input type="radio" name="viajado-antes" value="Sí"> Sí
+                    <input type="radio" name="viajado-antes" value="No" checked> No
+                    <textarea name="viajado-antes-detalles" placeholder="Explica brevemente las fechas." style="display:none;"></textarea>
+
+                    <label>¿Alguna vez te han negado una visa para EE.UU.?</label>
+                    <input type="radio" name="visa-negada" value="Sí"> Sí
+                    <input type="radio" name="visa-negada" value="No" checked> No
+                    <textarea name="visa-negada-detalles" placeholder="Explica el motivo y la fecha, si se conoce." style="display:none;"></textarea>
+
+                    <label>¿Alguna vez te han negado la entrada, has sido deportado o has permanecido más tiempo del permitido en EE.UU.?</label>
+                    <input type="radio" name="problemas-migratorios" value="Sí"> Sí
+                    <input type="radio" name="problemas-migratorios" value="No" checked> No
+                    <textarea name="problemas-migratorios-detalles" placeholder="Proporciona detalles." style="display:none;"></textarea>
+                </div>
+
+                <!-- Paso 7: Empleo y Educación -->
+                <div class="form-step" id="step-7" style="display:none;">
+                    <h3>Paso 7: Ocupación Actual</h3>
+                    <label for="ocupacion">Ocupación o profesión actual:</label>
+                    <input type="text" id="ocupacion" name="ocupacion" required>
+
+                    <label for="empleador">Nombre de tu empleador o negocio:</label>
+                    <input type="text" id="empleador" name="empleador" required>
+
+                    <label for="ingreso">Ingreso mensual aproximado (MXN):</label>
+                    <input type="text" id="ingreso" name="ingreso" required>
+
+                    <label for="responsabilidades">Describe brevemente tus responsabilidades laborales:</label>
+                    <textarea id="responsabilidades" name="responsabilidades" required></textarea>
+
+                    <label for="estudios">Máximo nivel de estudios completado:</label>
+                    <select id="estudios" name="estudios" required>
+                        <option value="Primaria">Primaria</option>
+                        <option value="Secundaria">Secundaria</option>
+                        <option value="Preparatoria">Preparatoria</option>
+                        <option value="Licenciatura">Licenciatura</option>
+                        <option value="Maestría">Maestría</option>
+                        <option value="Doctorado">Doctorado</option>
+                    </select>
+                </div>
+
+                <!-- Botones de Navegación -->
+                <div class="form-navigation">
+                    <button type="button" id="prevBtn">Anterior</button>
+                    <button type="button" id="nextBtn">Siguiente</button>
+                    <button type="submit" id="submitBtn" style="display:none;">Enviar Información</button>
+                </div>
+            </form>
+            <div id="success-message" style="display:none;">
+                <p>¡Gracias! Hemos recibido tus datos. Nos pondremos en contacto contigo muy pronto para continuar con tu trámite.</p>
+            </div>
+        </section>
+
+        <!-- 5. SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) -->
+        <section class="faq-section">
+            <h2>Resolvemos tus Dudas</h2>
+            <div class="faq-item">
+                <h3>¿Este es el trámite oficial del consulado?</h3>
+                <p>No. Somos un servicio de gestoría independiente que te asesora y facilita la preparación de tu información. El trámite final y la entrevista siempre son personales y a través de los canales oficiales.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Mis datos están seguros?</h3>
+                <p>Absolutamente. La seguridad y confidencialidad de tu información es nuestra máxima prioridad. Solo la usamos para los fines del trámite.</p>
+            </div>
+            <div class="faq-item">
+                <h3>¿Qué costo tiene el servicio?</h3>
+                <p>Nuestro servicio de asesoría y preparación tiene un costo de [Escribe aquí el precio o "Contáctanos para una cotización"]. Este costo es independiente del pago de derechos de la visa que se le hace directamente al gobierno de EE. UU.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. SECCIÓN DE CONTACTO Y PIE DE PÁGINA -->
+    <footer class="footer-section">
+        <h3>Asesoría de Visas [Apellido o nombre del negocio]</h3>
+        <div class="contact-info">
+            <!-- Icono de WhatsApp -->
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER">WhatsApp: [Tu Número de WhatsApp]</a>
+            <!-- Icono de Email -->
+            <a href="mailto:YOUR_EMAIL">Email: [El correo electrónico de tu esposa]</a>
+        </div>
+        <p class="disclaimer">No estamos afiliados con el gobierno de EE.UU. ni con ninguna embajada o consulado. Somos un servicio de asesoría privada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
