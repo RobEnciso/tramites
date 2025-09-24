@@ -190,48 +190,74 @@
 
                 <!-- Paso 6: Historial de Viajes a EE.UU. -->
                 <div class="form-step" id="step-6" style="display:none;">
-                    <h3>Paso 6: Historial Migratorio</h3>
-                    <label>¿Has viajado a Estados Unidos anteriormente?</label>
-                    <input type="radio" name="viajado-antes" value="Sí"> Sí
-                    <input type="radio" name="viajado-antes" value="No" checked> No
-                    <textarea name="viajado-antes-detalles" placeholder="Explica brevemente las fechas." style="display:none;"></textarea>
+    <h3>Paso 6: Historial Migratorio</h3>
 
-                    <label>¿Alguna vez te han negado una visa para EE.UU.?</label>
-                    <input type="radio" name="visa-negada" value="Sí"> Sí
-                    <input type="radio" name="visa-negada" value="No" checked> No
-                    <textarea name="visa-negada-detalles" placeholder="Explica el motivo y la fecha, si se conoce." style="display:none;"></textarea>
+    <label>¿Has viajado a Estados Unidos anteriormente?</label>
+    <input type="radio" name="viajado-antes" value="Sí"> Sí
+    <input type="radio" name="viajado-antes" value="No" checked> No
+    <textarea name="viajado-antes-detalles" placeholder="Explica brevemente las fechas." style="display:none;"></textarea>
 
-                    <label>¿Alguna vez te han negado la entrada, has sido deportado o has permanecido más tiempo del permitido en EE.UU.?</label>
-                    <input type="radio" name="problemas-migratorios" value="Sí"> Sí
-                    <input type="radio" name="problemas-migratorios" value="No" checked> No
-                    <textarea name="problemas-migratorios-detalles" placeholder="Proporciona detalles." style="display:none;"></textarea>
-                </div>
+    <label>¿Qué otros países has visitado en los últimos 5 años?</label>
+    <textarea name="otros_paises_visitados" placeholder="Escribe los países separados por comas. Si ninguno, deja en blanco."></textarea>
+
+    <label>¿Alguna vez te han negado una visa para EE.UU.?</label>
+    <input type="radio" name="visa-negada" value="Sí"> Sí
+    <input type="radio" name="visa-negada" value="No" checked> No
+    <textarea name="visa-negada-detalles" placeholder="Explica el motivo y la fecha, si se conoce." style="display:none;"></textarea>
+
+    <label>¿Alguna vez te han negado la entrada, has sido deportado o has permanecido más tiempo del permitido en EE.UU.?</label>
+    <input type="radio" name="problemas-migratorios" value="Sí"> Sí
+    <input type="radio" name="problemas-migratorios" value="No" checked> No
+    <textarea name="problemas-migratorios-detalles" placeholder="Proporciona detalles." style="display:none;"></textarea>
+</div>
 
                 <!-- Paso 7: Empleo y Educación -->
                 <div class="form-step" id="step-7" style="display:none;">
-                    <h3>Paso 7: Ocupación Actual</h3>
-                    <label for="ocupacion">Ocupación o profesión actual:</label>
-                    <input type="text" id="ocupacion" name="ocupacion" required>
+    <h3>Paso 7: Ocupación Actual</h3>
 
-                    <label for="empleador">Nombre de tu empleador o negocio:</label>
-                    <input type="text" id="empleador" name="empleador" required>
+    <label for="ocupacion">Ocupación o profesión actual:</label>
+    <input type="text" id="ocupacion" name="ocupacion" required>
+    
+    <label for="puesto">Puesto que desempeñas:</label>
+    <input type="text" id="puesto" name="puesto" required>
 
-                    <label for="ingreso">Ingreso mensual aproximado (MXN):</label>
-                    <input type="text" id="ingreso" name="ingreso" required>
+    <label for="empleador">Nombre de tu empleador o negocio:</label>
+    <input type="text" id="empleador" name="empleador" required>
+    
+    <label for="direccion_empleador">Dirección del empleador o negocio:</label>
+    <textarea id="direccion_empleador" name="direccion_empleador" required></textarea>
+    
+    <label for="telefono_empleador">Teléfono del empleador o negocio:</label>
+    <input type="tel" id="telefono_empleador" name="telefono_empleador" required>
 
-                    <label for="responsabilidades">Describe brevemente tus responsabilidades laborales:</label>
-                    <textarea id="responsabilidades" name="responsabilidades" required></textarea>
+    <label for="ingreso">Ingreso mensual aproximado (MXN):</label>
+    <input type="text" id="ingreso" name="ingreso" required>
 
-                    <label for="estudios">Máximo nivel de estudios completado:</label>
-                    <select id="estudios" name="estudios" required>
-                        <option value="Primaria">Primaria</option>
-                        <option value="Secundaria">Secundaria</option>
-                        <option value="Preparatoria">Preparatoria</option>
-                        <option value="Licenciatura">Licenciatura</option>
-                        <option value="Maestría">Maestría</option>
-                        <option value="Doctorado">Doctorado</option>
-                    </select>
-                </div>
+    <label for="funciones_realizadas">Funciones que realiza:</label>
+    <textarea id="funciones_realizadas" name="funciones_realizadas" placeholder="Describe brevemente tus principales funciones" required></textarea>
+
+    <label for="estudios">Máximo nivel de estudios completado:</label>
+    <select id="estudios" name="estudios" required>
+        <option value="Primaria">Primaria</option>
+        <option value="Secundaria">Secundaria</option>
+        <option value="Preparatoria">Preparatoria</option>
+        <option value="Licenciatura">Licenciatura</option>
+        <option value="Maestría">Maestría</option>
+        <option value="Doctorado">Doctorado</option>
+    </select>
+    
+    <label for="nombre_escuela">Nombre de la escuela:</label>
+    <input type="text" id="nombre_escuela" name="nombre_escuela" required>
+    
+    <label for="domicilio_escuela">Domicilio de la escuela:</label>
+    <textarea id="domicilio_escuela" name="domicilio_escuela" required></textarea>
+    
+    <label for="fecha_ingreso_escuela">Fecha de ingreso:</label>
+    <input type="date" id="fecha_ingreso_escuela" name="fecha_ingreso_escuela" required>
+    
+    <label for="fecha_termino_escuela">Fecha de término:</label>
+    <input type="date" id="fecha_termino_escuela" name="fecha_termino_escuela" required>
+</div>
 
                 <!-- Botones de Navegación -->
                 <div class="form-navigation">
